@@ -7,8 +7,6 @@ import VeeValidate from "vee-validate";
 window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
 
-window.Vue = require('vue');
-
 Vue.use(VeeValidate);
 
 /* eslint-disable no-new */
