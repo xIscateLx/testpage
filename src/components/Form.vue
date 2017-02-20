@@ -1,10 +1,10 @@
 <template>
-    <div class="row">
+    <div class="row" id="test-form">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="alert alert-success" role="alert" v-if="success">Form send successful. Time - {{
-                        moment('now').format('MMMM Do YYYY, h:mm:ss') }}
+                    <div class="alert alert-success" role="alert" v-if="success">Success. {{
+                        moment('now').format('Do MMMM YYYY, HH:mm:ss') }}
                     </div>
                     <form class="form-horizontal">
                         <div
@@ -40,7 +40,7 @@
                             <div class="col-sm-10">
                                 <input type="number" v-model="formData.age" class="form-control" id="age"
                                        name="age"
-                                       v-validate:formData.age="'required|numeric|min_value:0'">
+                                       v-validate:formData.age="'required|min_value:0'">
                                 <span v-if="formErrors.age !='' && hasErrors" class="help-block">
                                     {{ formErrors.age }}
                                 </span>
@@ -50,8 +50,10 @@
                             <label for="message" class="col-sm-2 control-label">Message</label>
                             <div class="col-sm-10">
                                 <textarea v-model="formData.message" class="form-control" id="message"
-                                       name="message"
-                                          v-validate:formData.message="'required'"></textarea>
+                                          name="message"
+                                          v-validate:formData.message="'required|max:150'"
+                                          placeholder="Up to 150 characters"
+                                ></textarea>
                                 <span v-if="formErrors.message !='' && hasErrors" class="help-block">
                                     {{ formErrors.message }}
                                 </span>
@@ -61,7 +63,8 @@
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" v-model="formData.checkbox"> I have read and agree to the terms of use
+                                        <input type="checkbox" v-model="formData.checkbox"> I have read and agree to the
+                                        terms of use
                                     </label>
                                 </div>
                             </div>
@@ -85,9 +88,10 @@
     const dictionary = {
         en: {
             messages: {
-                min: () => 'It\'s too short',
-                max: () => 'It\'s too long',
-                required: () => 'The field is required'
+                min: () => 'Value is too short',
+                max: () => 'Value is too long',
+                required: () => 'This field is required',
+                min_value: () => 'Age could not be negative'
             }
         }
     };
@@ -143,3 +147,9 @@
         }
     }
 </script>
+
+<style>
+    #test-form {
+        margin-top: 200px;
+    }
+</style>
