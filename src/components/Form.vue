@@ -149,7 +149,7 @@
 </script>
 
 <style>
-    #test-form {
-        margin-top: 200px;
+    textarea {
+        resize:vertical;
     }
 </style>

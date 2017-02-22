@@ -1,6 +1,10 @@
 <template>
     <div id="app">
         <div class="container">
+            <div class="text-center margin">
+                <img src="./assets/logo.svg" class="logo-img">
+            </div>
+
             <test-form></test-form>
         </div>
     </div>
@@ -26,5 +30,11 @@
     .form-group.required .control-label:after {
         content: "*";
         color: red;
+    }
+    .logo-img {
+        width: 300px;
+    }
+    .margin {
+        margin: 20px;
     }
 </style>
